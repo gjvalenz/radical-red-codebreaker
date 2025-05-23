@@ -1,0 +1,200 @@
+export const BUTTON_VALUES = {
+  A: 1,
+  B: 2,
+  Select: 4,
+  Start: 8,
+  Right: 16,
+  Left: 32,
+  Up: 64,
+  Down: 128,
+  R: 256,
+  L: 512,
+};
+
+export const MODE_OPTIONS = [
+  {
+    value: "pokeballs",
+    label: "Pokeballs",
+    icon: "https://img.pokemondb.net/sprites/items/poke-ball.png",
+  },
+  {
+    value: "key items",
+    label: "Key Items",
+    icon: "https://img.pokemondb.net/sprites/items/storage-key.png",
+  },
+  {
+    value: "tms",
+    label: "TMs",
+    icon: "https://img.pokemondb.net/sprites/items/tm-normal.png",
+  },
+  {
+    value: "items",
+    label: "Items",
+    icon: "https://img.pokemondb.net/sprites/items/potion.png",
+  },
+];
+
+export const POKEBALL_ITEM_OPTIONS = [
+  {
+    value: 0x0001,
+    label: "Master Ball",
+    hex: "0x01",
+    icon: "https://img.pokemondb.net/sprites/items/master-ball.png",
+  },
+  {
+    value: 0x0002,
+    label: "Ultra Ball",
+    hex: "0x02",
+    icon: "https://img.pokemondb.net/sprites/items/ultra-ball.png",
+  },
+  {
+    value: 0x0003,
+    label: "Great Ball",
+    hex: "0x03",
+    icon: "https://img.pokemondb.net/sprites/items/great-ball.png",
+  },
+  {
+    value: 0x0004,
+    label: "Pokeball",
+    hex: "0x04",
+    icon: "https://img.pokemondb.net/sprites/items/poke-ball.png",
+  },
+  {
+    value: 0x0005,
+    label: "Safari Ball",
+    hex: "0x05",
+    icon: "https://img.pokemondb.net/sprites/items/safari-ball.png",
+  },
+  {
+    value: 0x0006,
+    label: "Net Ball",
+    hex: "0x06",
+    icon: "https://img.pokemondb.net/sprites/items/net-ball.png",
+  },
+  {
+    value: 0x0007,
+    label: "Dive Ball",
+    hex: "0x07",
+    icon: "https://img.pokemondb.net/sprites/items/dive-ball.png",
+  },
+  {
+    value: 0x0008,
+    label: "Nest Ball",
+    hex: "0x08",
+    icon: "https://img.pokemondb.net/sprites/items/nest-ball.png",
+  },
+  {
+    value: 0x0009,
+    label: "Repeat Ball",
+    hex: "0x09",
+    icon: "https://img.pokemondb.net/sprites/items/repeat-ball.png",
+  },
+  {
+    value: 0x000a,
+    label: "Timer Ball",
+    hex: "0x0A",
+    icon: "https://img.pokemondb.net/sprites/items/timer-ball.png",
+  },
+  {
+    value: 0x000b,
+    label: "Luxury Ball",
+    hex: "0x0B",
+    icon: "https://img.pokemondb.net/sprites/items/luxury-ball.png",
+  },
+  {
+    value: 0x000c,
+    label: "Premier Ball",
+    hex: "0x0C",
+    icon: "https://img.pokemondb.net/sprites/items/premier-ball.png",
+  },
+  {
+    value: 0x00ef,
+    label: "Cherish Ball",
+    hex: "0xEF",
+    icon: "https://img.pokemondb.net/sprites/items/cherish-ball.png",
+  },
+  {
+    value: 0x00f0,
+    label: "Dusk Ball",
+    hex: "0xF0",
+    icon: "https://img.pokemondb.net/sprites/items/dusk-ball.png",
+  },
+  {
+    value: 0x00f1,
+    label: "Heal Ball",
+    hex: "0xF1",
+    icon: "https://img.pokemondb.net/sprites/items/heal-ball.png",
+  },
+  {
+    value: 0x00f2,
+    label: "Quick Ball",
+    hex: "0xF2",
+    icon: "https://img.pokemondb.net/sprites/items/quick-ball.png",
+  },
+  {
+    value: 0x00f3,
+    label: "Fast Ball",
+    hex: "0xF3",
+    icon: "https://img.pokemondb.net/sprites/items/fast-ball.png",
+  },
+  {
+    value: 0x00f4,
+    label: "Level Ball",
+    hex: "0xF4",
+    icon: "https://img.pokemondb.net/sprites/items/level-ball.png",
+  },
+  {
+    value: 0x00f5,
+    label: "Lure Ball",
+    hex: "0xF5",
+    icon: "https://img.pokemondb.net/sprites/items/lure-ball.png",
+  },
+  {
+    value: 0x00f6,
+    label: "Heavy Ball",
+    hex: "0xF6",
+    icon: "https://img.pokemondb.net/sprites/items/heavy-ball.png",
+  },
+  {
+    value: 0x00f7,
+    label: "Love Ball",
+    hex: "0xF7",
+    icon: "https://img.pokemondb.net/sprites/items/love-ball.png",
+  },
+  {
+    value: 0x00f8,
+    label: "Friend Ball",
+    hex: "0xF8",
+    icon: "https://img.pokemondb.net/sprites/items/friend-ball.png",
+  },
+  {
+    value: 0x00f9,
+    label: "Moon Ball",
+    hex: "0xF9",
+    icon: "https://img.pokemondb.net/sprites/items/moon-ball.png",
+  },
+  {
+    value: 0x00fa,
+    label: "Sport Ball",
+    hex: "0xFA",
+    icon: "https://img.pokemondb.net/sprites/items/sport-ball.png",
+  },
+  {
+    value: 0x00fb,
+    label: "Beast Ball",
+    hex: "0xFB",
+    icon: "https://img.pokemondb.net/sprites/items/beast-ball.png",
+  },
+  {
+    value: 0x00fc,
+    label: "Dream Ball",
+    hex: "0xFC",
+    icon: "https://img.pokemondb.net/sprites/items/dream-ball.png",
+  },
+  {
+    value: 0x00fd,
+    label: "Park Ball",
+    hex: "0xFD",
+    icon: "https://img.pokemondb.net/sprites/items/park-ball.png",
+  },
+];
