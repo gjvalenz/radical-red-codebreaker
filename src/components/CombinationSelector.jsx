@@ -7,12 +7,12 @@ export default ({ noCombo, setNoCombo, selectedButtons, toggleButton }) => {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-2">Activation Combination</h2>
-      <Label className="flex items-center space-x-2">
+      <Label className="flex items-center space-x-2 text-lg font-bold p-2 rounded shadow mb-10">
+        <span>No Combination?</span>
         <Checkbox
           checked={noCombo}
           onCheckedChange={() => setNoCombo(!noCombo)}
         />
-        <span>No Combination</span>
       </Label>
       {!noCombo && (
         <div className="grid grid-cols-4 gap-3">
