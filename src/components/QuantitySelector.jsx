@@ -1,6 +1,5 @@
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 export default ({ quantity, setQuantity, infinite, setInfinite, mode }) => {
   if (mode === "key item" || mode === "tm") return null;

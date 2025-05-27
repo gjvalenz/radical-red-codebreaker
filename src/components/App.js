@@ -1,22 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Copy, ChevronDown } from "lucide-react";
-import * as Select from "@radix-ui/react-select";
 
 import ModeSelector from "@/components/ModeSelector";
 import CombinationSelector from "@/components/CombinationSelector";
 import ItemSelector from "@/components/ItemSelector";
 import QuantitySelector from "./QuantitySelector";
+import CodeDisplay from "./CodeDisplay";
 
-import {
-  BUTTON_VALUES,
-  MODE_OPTIONS,
-  ADDRESS_LOOKUP,
-  POKEBALL_ITEM_OPTIONS,
-} from "@/values";
+import { BUTTON_VALUES, ADDRESS_LOOKUP } from "@/values";
 
 export default function () {
   const [mode, setMode] = useState("none"); // pokeball, key item, item, tm, berry
@@ -26,14 +20,6 @@ export default function () {
   const [quantity, setQuantity] = useState("1");
   const [infinite, setInfinite] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  const toggleButton = (button) => {
-    setSelectedButtons((prev) =>
-      prev.includes(button)
-        ? prev.filter((b) => b !== button)
-        : [...prev, button]
-    );
-  };
 
   const numToHexCode = (num) => num.toString(16).toUpperCase().padStart(4, "0");
 
@@ -54,10 +40,13 @@ export default function () {
     return `D0000020 ${combo}\n8${addressValues.type} ${type}\n7${addressValues.type} ${type}\n8${addressValues.amount} ${amount}`;
   };
 
+  const code = generateCode();
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(generateCode());
+    navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    toast.success("Code copied to clipboard!");
   };
 
   useEffect(() => {
@@ -94,41 +83,14 @@ export default function () {
             selectedButtons={selectedButtons}
             setSelectedButtons={setSelectedButtons}
           />
+          <CodeDisplay
+            code={code}
+            handleCopy={handleCopy}
+            comboMode={comboMode}
+            copied={copied}
+          />
         </CardContent>
       </Card>
-
-      <div className="bg-white p-6 rounded-2xl shadow-xl space-y-4 text-sm">
-        <h2 className="text-xl font-semibold mb-2">Code</h2>
-        <p>
-          Note: You may need to open your bag twice after activating via
-          combination.
-        </p>
-        {!comboMode && (
-          <p>
-            Note: Upon activation, try to deactivate it immediately before
-            opening your bag.
-          </p>
-        )}
-        <pre
-          className="whitespace-pre-wrap font-mono cursor-pointer bg-black text-lime-300 text-md p-6 rounded-xl border border-lime-500 shadow-lg tracking-wide"
-          onClick={handleCopy}
-        >
-          {generateCode()}
-        </pre>
-        <Button
-          onClick={handleCopy}
-          className="flex items-center space-x-2 bg-rose-600 hover:bg-rose-700 text-white"
-        >
-          <Copy size={16} />
-          <span>{copied ? "Copied!" : "Copy Code"}</span>
-        </Button>
-      </div>
-
-      {copied && (
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300">
-          Code copied to clipboard!
-        </div>
-      )}
     </main>
   );
 }

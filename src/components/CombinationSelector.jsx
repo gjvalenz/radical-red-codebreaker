@@ -48,27 +48,3 @@ export default ({
     </div>
   );
 };
-
-{
-  /*<Checkbox
-          checked={noCombo}
-          onCheckedChange={() => setNoCombo(!noCombo)}
-        />*/
-}
-
-/*
-<div className="grid grid-cols-4 gap-3">
-          {Object.keys(BUTTON_VALUES).map((button) => (
-            <Label
-              key={button}
-              className="flex items-center space-x-2 bg-gray-50 p-2 rounded shadow"
-            >
-              <Checkbox
-                checked={selectedButtons.includes(button)}
-                onCheckedChange={() => toggleButton(button)}
-              />
-              <span>{button}</span>
-            </Label>
-          ))}
-        </div>
-        */
