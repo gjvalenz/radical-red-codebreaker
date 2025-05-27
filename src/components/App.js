@@ -20,7 +20,7 @@ import {
 
 export default function () {
   const [mode, setMode] = useState("pokeball"); // pokeball, key item, item, tm, berry
-  const [noCombo, setNoCombo] = useState(false);
+  const [comboMode, setComboMode] = useState(true);
   const [selectedButtons, setSelectedButtons] = useState([]);
   const [selectedItem, setSelectedItem] = useState(0x0001);
   const [quantity, setQuantity] = useState("1");
@@ -47,7 +47,7 @@ export default function () {
     const amountRaw = Math.min(999, Math.max(1, parseInt(quantity) || 1));
     const amount = infinite ? "FFFF" : numToHexCode(amountRaw);
     const addressValues = ADDRESS_LOOKUP[mode];
-    if (noCombo) {
+    if (!comboMode) {
       return `8${addressValues.type} ${type}\n8${addressValues.amount} ${amount}`;
     }
     return `D0000020 ${combo}\n8${addressValues.type} ${type}\n7${addressValues.type} ${type}\n8${addressValues.amount} ${amount}`;
@@ -78,10 +78,10 @@ export default function () {
         <CardContent className="p-6 space-y-8">
           <ModeSelector mode={mode} setMode={setMode} />
           <CombinationSelector
-            noCombo={noCombo}
-            setNoCombo={setNoCombo}
+            comboMode={comboMode}
+            setComboMode={setComboMode}
             selectedButtons={selectedButtons}
-            toggleButton={toggleButton}
+            setSelectedButtons={setSelectedButtons}
           />
           <ItemSelector
             selectedItem={selectedItem}
@@ -104,7 +104,7 @@ export default function () {
           Note: You may need to open your bag twice after activating via
           combination.
         </p>
-        {noCombo && (
+        {!comboMode && (
           <p>
             Note: Upon activation, try to deactivate it immediately before
             opening your bag.
