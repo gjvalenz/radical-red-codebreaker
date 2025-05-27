@@ -1,6 +1,7 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import { BUTTON_VALUES } from "@/values";
 
@@ -13,41 +14,37 @@ export default ({
   return (
     <div>
       <h2 className="text-xl font-semibold mb-2">Activation Combination</h2>
-      <RadioGroup
-        className="dark"
-        defaultValue="true"
-        orientation="horizontal"
-        onValueChange={(value) => setComboMode(value === "true")}
-      >
-        <span>
-          <RadioGroupItem value="true" id="yes" />
-          <label htmlFor="yes">Yes</label>
-        </span>
-        <span>
-          <RadioGroupItem value="false" id="no" />
-          <label htmlFor="no">No</label>
-        </span>
-      </RadioGroup>
-      <Label className="flex items-center space-x-2 text-lg p-2 mb-10">
-        <span>Toggle Combination</span>
-      </Label>
-      {comboMode && (
-        <ToggleGroup
-          variant="outline"
-          type="multiple"
-          onValueChange={(value) => setSelectedButtons(value)}
+      <div className="flex items-center space-x-2 py-2">
+        <Checkbox
+          id="combination"
+          checked={comboMode}
+          onCheckedChange={(v) => setComboMode(v)}
+        />
+        <label
+          htmlFor="combination"
+          className="text-md leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          {Object.keys(BUTTON_VALUES).map((button) => (
-            <ToggleGroupItem
-              key={button}
-              value={button}
-              aria-label={`Toggle ${button}`}
-            >
-              {button}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
-      )}
+          Require a button combination to activate the cheat? (Recommended)
+        </label>
+      </div>
+
+      <ToggleGroup
+        type="multiple"
+        onValueChange={(value) => setSelectedButtons(value)}
+        className="mt-4"
+      >
+        {Object.keys(BUTTON_VALUES).map((button) => (
+          <ToggleGroupItem
+            key={button}
+            value={button}
+            aria-label={`Toggle ${button}`}
+            className="px-4 py-2 rounded-2xl"
+            disabled={!comboMode}
+          >
+            {button}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
     </div>
   );
 };

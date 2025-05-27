@@ -19,7 +19,7 @@ import {
 } from "@/values";
 
 export default function () {
-  const [mode, setMode] = useState("pokeball"); // pokeball, key item, item, tm, berry
+  const [mode, setMode] = useState("none"); // pokeball, key item, item, tm, berry
   const [comboMode, setComboMode] = useState(true);
   const [selectedButtons, setSelectedButtons] = useState([]);
   const [selectedItem, setSelectedItem] = useState(0x0001);
@@ -38,6 +38,7 @@ export default function () {
   const numToHexCode = (num) => num.toString(16).toUpperCase().padStart(4, "0");
 
   const generateCode = () => {
+    if (mode === "none") return "";
     const buttonValue = selectedButtons.reduce(
       (acc, cur) => acc | BUTTON_VALUES[cur],
       0
@@ -72,17 +73,9 @@ export default function () {
         🎮 Pokemon Radical Red 4.1 Codebreaker Item Generator
       </h1>
       <Card className="shadow-xl rounded-2xl">
-        <h2 className="text-3xl font-bold text-center mt-2">
-          Generate {MODE_OPTIONS.find((item) => item.value === mode)?.label}
-        </h2>
-        <CardContent className="p-6 space-y-8">
+        <h2 className="text-3xl font-bold text-center mt-2">Generate Items</h2>
+        <CardContent className="pt-3 pb-6 space-y-[22px]">
           <ModeSelector mode={mode} setMode={setMode} />
-          <CombinationSelector
-            comboMode={comboMode}
-            setComboMode={setComboMode}
-            selectedButtons={selectedButtons}
-            setSelectedButtons={setSelectedButtons}
-          />
           <ItemSelector
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
@@ -94,6 +87,12 @@ export default function () {
             infinite={infinite}
             setInfinite={setInfinite}
             mode={mode}
+          />
+          <CombinationSelector
+            comboMode={comboMode}
+            setComboMode={setComboMode}
+            selectedButtons={selectedButtons}
+            setSelectedButtons={setSelectedButtons}
           />
         </CardContent>
       </Card>

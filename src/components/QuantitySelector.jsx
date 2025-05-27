@@ -22,15 +22,21 @@ export default ({ quantity, setQuantity, infinite, setInfinite, mode }) => {
               setQuantity("");
             }
           }}
-          className="w-24"
+          className="w-18"
         />
-        <Label className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 py-2">
           <Checkbox
+            id="inf"
             checked={infinite}
-            onCheckedChange={() => setInfinite(!infinite)}
+            onCheckedChange={(v) => setInfinite(!infinite)}
           />
-          <span>Infinite</span>
-        </Label>
+          <label
+            htmlFor="inf"
+            className="text-md leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Infinite?
+          </label>
+        </div>
       </div>
     </div>
   );
