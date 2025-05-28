@@ -4,23 +4,16 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import Tip from "./Tip";
 
 import ALL_ITEMS from "../items.json";
 
@@ -37,21 +30,12 @@ export default ({ selectedItem, setSelectedItem, mode }) => {
       <div className="flex flex-row items-center mb-1">
         <h2 className="text-xl font-semibold mb-1">Select Item</h2>
         {itemIsSelected && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <span className="ml-2 cursor-pointer">
-                  <Info className="h-4 w-4" />
-                </span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>
-                  Close and open your bag again if the item doesn't seem to
-                  appear.
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Tip
+            content="Close and open your bag again if the item doesn't seem to appear."
+            className="ml-2"
+          >
+            <Info className="h-4 w-4" />
+          </Tip>
         )}
       </div>
       <div className="flex flex-row">
@@ -82,16 +66,16 @@ export default ({ selectedItem, setSelectedItem, mode }) => {
           </SelectTrigger>
         </Select>
         {itemIsSelected && (
-          <HoverCard>
-            <HoverCardTrigger asChild>
+          <Popover>
+            <PopoverTrigger asChild>
               <Button
                 variant="link"
-                className="underline decoration-dashed decoration-[0.05rem] text-sm"
+                className="underline decoration-dashed decoration-[0.05rem] text-xs md:text-sm"
               >
                 More
               </Button>
-            </HoverCardTrigger>
-            <HoverCardContent className="w-80">
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
               <div className="flex justify-between space-x-4">
                 <img
                   src={currentItem.icon}
@@ -113,8 +97,8 @@ export default ({ selectedItem, setSelectedItem, mode }) => {
                   </div>
                 </div>
               </div>
-            </HoverCardContent>
-          </HoverCard>
+            </PopoverContent>
+          </Popover>
         )}
       </div>
     </div>

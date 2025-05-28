@@ -1,11 +1,6 @@
 import { TriangleAlert, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import Tip from "./Tip";
 
 export default ({ code, handleCopy, comboMode, copied }) => {
   return (
@@ -13,21 +8,12 @@ export default ({ code, handleCopy, comboMode, copied }) => {
       <div className="flex flex-row items-center mb-1">
         <h2 className="text-xl font-semibold mb-1">Code</h2>
         {!comboMode && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <span className="ml-2 cursor-pointer">
-                  <TriangleAlert className="h-4 w-4 text-yellow-300" />
-                </span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>
-                  Ideally, after inputting your cheat, deactivate it before
-                  opening your bag.
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Tip
+            content="Ideally, after inputting your cheat, deactivate it before opening your bag."
+            className="ml-2"
+          >
+            <TriangleAlert className="h-4 w-4 text-yellow-300" />
+          </Tip>
         )}
       </div>
       <div className="flex items-center justify-center h-[7rem] bg-neutral-950 rounded-sm mb-2">
