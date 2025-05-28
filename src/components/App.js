@@ -57,13 +57,15 @@ export default function () {
   }, [mode]);
 
   return (
-    <main className="p-6 max-w-2xl mx-auto space-y-6 relative">
+    <main className="p-6 lg:max-w-2xl w-full mx-auto space-y-6 relative">
       <h1 className="text-4xl font-bold text-center mb-12">
         🎮 Pokemon Radical Red 4.1 Codebreaker Item Generator
       </h1>
-      <Card className="shadow-xl rounded-2xl">
-        <h2 className="text-3xl font-bold text-center mt-2">Generate Items</h2>
-        <CardContent className="pt-3 pb-6 space-y-[22px]">
+      <Card className="shadow-md rounded-2xl">
+        <h2 className="text-3xl font-bold text-center mt-2">
+          Generate Item Code
+        </h2>
+        <CardContent className="pt-1 pb-6 space-y-[22px]">
           <ModeSelector mode={mode} setMode={setMode} />
           <ItemSelector
             selectedItem={selectedItem}
